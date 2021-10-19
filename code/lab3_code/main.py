@@ -2,6 +2,7 @@ from functools import wraps
 
 from lab_python_fp.field import field
 from lab_python_fp.gen_random import gen_random
+from lab_python_fp.unique import Unique
 
 def beginning_decorator(output):
     def decorator(wrapped_function):
@@ -46,10 +47,22 @@ def task2_test():
     for r in gen_random(5, 1, 3):
         print(r)
 
+@beginning_decorator('Task #3')
+def task3_test():
+    data = ['a', 'A', 'b', 'B', 'a', 'A', 'b', 'B']
+    print('case sensitive:')
+    for d in Unique(data):
+        print(d)
+
+    print('case insensitive:')
+    for d in Unique(data, True):
+        print(d)
+
 
 def main() -> None:
     task1_test()
     task2_test()
+    task3_test()
 
 
 if __name__ == "__main__":
