@@ -17,7 +17,7 @@ class Unique:
                 current = self.data[self.index]      
                 self.index = self.index + 1
                 if (self.ignore_case):
-                    current_lowered = current.lower();
+                    current_lowered = current.lower()
                     if current_lowered not in self.used_elements:
                         self.used_elements.add(current_lowered)
                         return current
