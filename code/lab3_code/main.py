@@ -1,5 +1,3 @@
-from functools import wraps
-
 from lab_python_fp.field import field
 from lab_python_fp.gen_random import gen_random
 from lab_python_fp.unique import Unique
@@ -8,9 +6,10 @@ from lab_python_fp.print_task import print_task
 from lab_python_fp.print_result import print_result
 from lab_python_fp.cm_timer1 import CmTimer
 from lab_python_fp.cm_timer2 import cm_timer2
+from lab_python_fp.process_data import process_data
 
 @print_task
-def task1():
+def task1() -> None:
     goods = [
         {'title': 'Ковер', 'price': 2000, 'color': 'green'},
         {'title': 'Диван для отдыха', 'color': 'black'}
@@ -34,13 +33,13 @@ def task1():
 
 
 @print_task
-def task2():
+def task2() -> None:
     for r in gen_random(5, 1, 3):
         print(r)
 
 
 @print_task
-def task3():
+def task3() -> None:
     data = ['a', 'A', 'b', 'B', 'a', 'A', 'b', 'B']
     print('case sensitive:')
     for d in Unique(data):
@@ -52,12 +51,12 @@ def task3():
 
 
 @print_task
-def task4():
+def task4() -> None:
     data = [4, -30, 100, -100, 123, 1, 0, -1, -4]
     sort(data)
 
 @print_task
-def task5():
+def task5() -> None:
     @print_result
     def test_primitive_1():
         return 1
@@ -84,9 +83,9 @@ def task5():
     test_list()
 
 @print_task
-def task6():
-    num_of_iterations = 100_000_000
-    def test_function():
+def task6() -> None:
+    num_of_iterations = 10_000_000
+    def test_function() -> None:
         for i in range(num_of_iterations):
             continue
 
@@ -100,6 +99,10 @@ def task6():
         test_function()
     print('(contextlib @contextmanager decorator implementation)')
 
+@print_task
+def task7() -> None:
+    path = '../../notebooks/fp/files/data_light.json'
+    process_data(path)
 
 
 def main() -> None:
@@ -109,6 +112,7 @@ def main() -> None:
     task4()
     task5()
     task6()
+    task7()
 
 
 if __name__ == "__main__":

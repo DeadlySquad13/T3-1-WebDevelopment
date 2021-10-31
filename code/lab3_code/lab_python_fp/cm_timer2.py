@@ -4,6 +4,8 @@ from time import time
 @contextmanager
 def cm_timer2():
     start_time = time()
-    yield 333
+    yield
+    print('-------------------')
     print(time() - start_time)
+    print('-------------------')
 

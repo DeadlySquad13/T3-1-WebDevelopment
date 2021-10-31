@@ -2,7 +2,7 @@
 class Unique:
     def __init__(self, data, ignore_case=False):
         self.used_elements = set() 
-        self.data = data
+        self.data = list(data)
         self.index = 0
         self.ignore_case = ignore_case
 

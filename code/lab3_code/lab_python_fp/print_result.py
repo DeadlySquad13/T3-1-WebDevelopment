@@ -10,15 +10,16 @@ def print_result(function_to_wrap):
             for item in result:
                 print(item)
 
-            return
+            return result
 
         if isinstance(result, dict):
             for key, item in result.items():
                 print(f'{key} = {item}')
 
-            return
+            return result
 
         print(result)
+        return result
 
     return wrapper
 
