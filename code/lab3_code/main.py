@@ -6,6 +6,8 @@ from lab_python_fp.unique import Unique
 from lab_python_fp.sort import sort
 from lab_python_fp.print_task import print_task
 from lab_python_fp.print_result import print_result
+from lab_python_fp.cm_timer1 import CmTimer
+from lab_python_fp.cm_timer2 import cm_timer2
 
 @print_task
 def task1():
@@ -81,6 +83,24 @@ def task5():
     test_dictionary()
     test_list()
 
+@print_task
+def task6():
+    num_of_iterations = 100_000_000
+    def test_function():
+        for i in range(num_of_iterations):
+            continue
+
+    print(f'{num_of_iterations:,.0f} iterations were completed in:')
+    with CmTimer() as test_timer1:
+        test_function()
+    print('(class implementation)')
+    print()
+
+    with cm_timer2() as test_timer2:
+        test_function()
+    print('(contextlib @contextmanager decorator implementation)')
+
+
 
 def main() -> None:
     task1()
@@ -88,6 +108,7 @@ def main() -> None:
     task3()
     task4()
     task5()
+    task6()
 
 
 if __name__ == "__main__":
