@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from decouple import config
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -118,6 +119,10 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'anime/_assets/_images/__Posters')
+MEDIA_URL = '/anime/_assets/_images/__Posters/'
 
 
 # Static files (CSS, JavaScript, Images)

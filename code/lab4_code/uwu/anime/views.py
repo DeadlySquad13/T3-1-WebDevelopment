@@ -1,32 +1,33 @@
 from django.http import HttpResponse
 from django.template import loader
+from django.shortcuts import render
 
 from .models import Anime
-from .utilities import avg
-
-
-def get_avg_score(anime):
-    anime_scores = anime.score_set.all()
-
-    return avg([s.score for s in anime_scores])
-
 
 def index(request):
-    anime_list = Anime.objects.all()
+    anime_instances = Anime.objects.all()
 
-    anime_list_sorted = sorted(anime_list, key=get_avg_score, reverse=True)
+    # rated_animes_instances = { anime:get_anime_avg_score(anime) for anime in anime_instances }
+
+    animes_sorted = sorted(anime_instances, key=lambda a: a.get_avg_score(), reverse=True)
 
     template = loader.get_template('anime/index.html')
 
     context = {
-        'anime_list': anime_list_sorted
+        'animes': animes_sorted
     }
 
     return HttpResponse(template.render(context, request))
 
 
 def detail(request, anime_id):
-    return HttpResponse(f'You are looking at anime {anime_id}')
+    anime = Anime.objects.get(id=anime_id)
+
+    context = {
+        'anime': anime
+    }
+
+    return render(request, 'anime/detail.html', context)
 
 
 def results(request, anime_id):
@@ -36,3 +37,4 @@ def results(request, anime_id):
 
 def rate(request, anime_id):
     return HttpResponse(f'You are rating anime {anime_id}')
+

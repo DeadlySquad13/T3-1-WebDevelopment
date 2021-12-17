@@ -1,10 +1,16 @@
 from django.db import models
+from .utilities import avg
 
 
 class Anime(models.Model):
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=200, blank=True)
-    poster = models.ImageField(blank=True)
+    poster = models.ImageField(upload_to='./', blank=True)
+
+    def get_avg_score(self):
+        anime_scores = self.score_set.all()
+
+        return 0 if not anime_scores else avg([s.score for s in anime_scores])
 
     def __str__(self):
         return (

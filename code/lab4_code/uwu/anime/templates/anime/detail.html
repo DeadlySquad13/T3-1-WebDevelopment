@@ -1,0 +1,18 @@
+{% if anime %}
+<img src="{{anime.poster.url}}" alt="{{ anime.title }}"/>
+    <table>
+      <tr>
+        <th>Title:</th>
+        <td>{{ anime.title }}</td>
+      </tr>
+      <tr>
+        <th>Description</th>
+        <th>{{ anime.description }}</th>
+      </tr>
+    </table>
+
+    <a href="/anime/">Back to list</a>
+{% else %}
+    <p>Not found</p>
+{% endif %}
+
