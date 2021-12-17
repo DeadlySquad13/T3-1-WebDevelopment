@@ -1,0 +1,10 @@
+{% if anime_list %}
+    <ul>
+    {% for anime in anime_list %}
+        <li><a href="/anime/{{ anime.id }}/">{{ anime.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No anime.</p>
+{% endif %}
+
