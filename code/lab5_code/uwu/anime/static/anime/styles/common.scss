@@ -1,44 +1,11 @@
-$colorPalette: (
-  graniteGray: #715f65,
-  amaranthPink: #f5a3b7,
-  crimsonRed: #990000,
-  mistyRose: #fee2e3,
-  lavenderGray: #bfb9cf,
-  weldonBlue: #8498af,
-  lavenderBlush: #fff5f5,
-);
+@import '_palettes';
 
-@function getColor($key) {
-  @return map-get($colorPalette, $key);
+root {
+  font-size: 14px;
 }
 
-$semanticPalette: (
-  neutral: (
-    primary: getColor(lavenderBlush),
-    secondary: getColor(mistyRose),
-  ),
-
-  informational: (
-    primary: getColor(graniteGray),
-  ),
-
-  vague: (
-    primary: getColor(lavenderGray),
-  ),
-
-  contrasting: (
-    primary: getColor(crimsonRed),
-    secondary: getColor(amaranthPink),
-  )
-
-  //secondary: getColor(graniteGray),
-  //: getColor(graniteGray),
-  //contrasting: getColor(graniteGray),
-  //contrasting: getColor(graniteGray),
-);
-
-@function getSemanticColor($semanticKey, $degreeKey) {
-  @return map-get(map-get($semanticPalette, $semanticKey), $degreeKey);
+h1 {
+  margin: 0;
 }
 
 body {
@@ -54,17 +21,17 @@ main {
   align-items: center;
 }
 
-.anime-BackLink {
+.BackLink {
   $height: 40px;
 
   height: $height;
-  width: 100px;
 
   border-radius: $height;
   background-color: getSemanticColor(vague, primary);
 
   display: block;
   text-align: center;
+  padding: 4px 16px;
 
   color: darken(getSemanticColor(vague, primary), 40%);
   line-height: $height;

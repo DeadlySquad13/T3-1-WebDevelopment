@@ -1,26 +1,26 @@
 {% extends "base_layout.html" %}
 {% load sass_tags %}
 
-  {% block stylesheet %}
-    <link href="{% sass_src 'anime/styles/detail.scss' %}" rel="stylesheet" type="text/css" />
-  {% endblock %}
-  {% block content %}
-    <main>
-      <section class="anime-Card">
-        {% if anime %}
-        <img class="anime-Card__Poster" src="{{anime.poster.url}}" alt="{{ anime.title }}"/>
-        <article class="anime-Card__Info">
-            <h2 class="anime-Card__Title">
-              {{ anime.title }}
-            </h2>
-            <p>{{ anime.description }}</p>
-        <article>
+{% block stylesheet %}
+  <link href="{% sass_src 'anime/styles/detail.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+{% block content %}
+  <main>
+    <section class="anime-Card">
+      {% if anime %}
+      <img class="anime-Card__Poster" src="{{anime.poster.url}}" alt="{{ anime.title }}"/>
+      <article class="anime-Card__Info">
+          <h2 class="anime-Card__Title">
+            {{ anime.title }}
+          </h2>
+          <p>{{ anime.description }}</p>
+      <article>
 
-        {% else %}
-            <p>Not found</p>
-        {% endif %}
-      </section>
+      {% else %}
+          <p>Not found</p>
+      {% endif %}
+    </section>
 
-      <a class="anime-BackLink" href="/anime/">Back to list</a>
-    </main>
-  {% endblock %}
+    <a class="BackLink" href="/anime/">Back to list</a>
+  </main>
+{% endblock %}

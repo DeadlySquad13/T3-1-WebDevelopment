@@ -1,18 +1,16 @@
+{% extends "base_layout.html" %}
 {% load sass_tags %}
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link href="{% sass_src 'anime/styles/index.scss' %}" rel="stylesheet" type="text/css" />
-    <title>Anime</title>
-  </head>
-  <body>
+{% block stylesheet %}
+  <link href="{% sass_src 'anime/styles/index.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+{% block content %}
+  <main>
+    <h1 class="Greeting">Uwu Anime</h1>
     {% if animes %}
-      <ul>
+      <ul class="AnimeList">
         {% for anime in animes %}
-          <li>
+          <li class="AnimeList__Item">
             <a href="{% url 'anime:detail' anime.id %}">{{ anime.title }} (score: {{ anime.get_avg_score }})</a>
           </li>
         {% endfor %}
@@ -20,6 +18,6 @@
     {% else %}
       <p>No anime.</p>
     {% endif %}
-    <a href="/">Back to main page</a>
-  </body>
-</html>
+    <a class="BackLink" href="/">Back to main page</a>
+  </main>
+{% endblock %}

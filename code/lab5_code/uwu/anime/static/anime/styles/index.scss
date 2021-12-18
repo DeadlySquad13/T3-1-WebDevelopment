@@ -1,88 +1,29 @@
-$colorPalette: (
-  graniteGray: #715f65,
-  amaranthPink: #f5a3b7,
-  crimsonRed: #990000,
-  mistyRose: #fee2e3,
-  lavenderGray: #bfb9cf,
-  weldonBlue: #8498af,
-  lavenderBlush: #fff5f5,
-);
+@import '_typography';
 
-@function getColor($key) {
-  @return map-get($colorPalette, $key);
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+.Greeting {
+  //position: absolute;
+  //top: 50%;
+  //left: 50%;
+  //transform: translate(-50%, -50%);
+
+  animation: fadein 2s;
+  font-size: 15rem;
+  font-family: getTypography(fontFamilyContrasting)
 }
 
-$semanticPalette: (
-  neutral: (
-    primary: getColor(lavenderBlush),
-    secondary: getColor(mistyRose),
-  ),
+.AnimeList {
+  list-style: none;
 
-  informational: (
-    primary: getColor(graniteGray),
-  ),
-
-  vague: (
-    primary: getColor(lavenderGray),
-  ),
-
-  contrasting: (
-    primary: getColor(crimsonRed),
-    secondary: getColor(amaranthPink),
-  )
-
-  //secondary: getColor(graniteGray),
-  //: getColor(graniteGray),
-  //contrasting: getColor(graniteGray),
-  //contrasting: getColor(graniteGray),
-);
-
-@function getSemanticColor($semanticKey, $degreeKey) {
-  @return map-get(map-get($semanticPalette, $semanticKey), $degreeKey);
-}
-
-body {
-  display: flex;
-  justify-content: center;
-
-  background-color: getSemanticColor(neutral, primary);
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.anime-Card {
-  width: 640px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  &__Info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-    font-size: 1.3rem;
-  }
-
-  &__Poster {
-    width: 225px * 1.5;
-    height: 318px * 1.5;
-
-    border-radius: 4%;
-  }
-
-  &__Title {
-    font-family: 'Noto Sans', sans-serif;
-    letter-spacing: 3px;
+  &__Item {
+    font-family: getTypography(fontFamilyPrimary);
     font-size: 2rem;
   }
 }
-
