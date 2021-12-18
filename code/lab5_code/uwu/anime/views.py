@@ -1,38 +1,28 @@
 from django.http import HttpResponse
-from django.template import loader
-from django.shortcuts import render
+from django.views import generic
 
 from .models import Anime
 
-def index(request):
-    anime_instances = Anime.objects.all()
 
-    # rated_animes_instances = { anime:get_anime_avg_score(anime) for anime in anime_instances }
+class IndexView(generic.ListView):
+    template_name = 'anime/index.html'
+    context_object_name = 'animes'
 
-    animes_sorted = sorted(anime_instances, key=lambda a: a.get_avg_score(), reverse=True)
+    def get_queryset(self):
+        anime_instances = Anime.objects.all()
 
-    template = loader.get_template('anime/index.html')
+        animes_sorted = sorted(
+            anime_instances,
+            key=lambda a: a.get_avg_score(),
+            reverse=True
+        )
 
-    context = {
-        'animes': animes_sorted
-    }
-
-    return HttpResponse(template.render(context, request))
-
-
-def detail(request, anime_id):
-    anime = Anime.objects.get(id=anime_id)
-
-    context = {
-        'anime': anime
-    }
-
-    return render(request, 'anime/detail.html', context)
+        return animes_sorted
 
 
-def results(request, anime_id):
-    response = f'You are looking at the results of anime {anime_id}'
-    return HttpResponse(response)
+class DetailView(generic.DetailView):
+    model = Anime
+    template_name = 'anime/detail.html'
 
 
 def rate(request, anime_id):
