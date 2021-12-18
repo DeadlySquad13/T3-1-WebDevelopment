@@ -1,30 +1,26 @@
+{% extends "base_layout.html" %}
 {% load sass_tags %}
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link href="{% sass_src 'anime/styles/index.scss' %}" rel="stylesheet" type="text/css" />
-    <title>{{ anime.title }}</title>
-  </head>
-  <body>
-    {% if anime %}
-    <img src="{{anime.poster.url}}" alt="{{ anime.title }}"/>
-        <table>
-          <tr>
-            <th>Title:</th>
-            <td>{{ anime.title }}</td>
-          </tr>
-          <tr>
-            <th>Description</th>
-            <td>{{ anime.description }}</td>
-          </tr>
-        </table>
+  {% block stylesheet %}
+    <link href="{% sass_src 'anime/styles/detail.scss' %}" rel="stylesheet" type="text/css" />
+  {% endblock %}
+  {% block content %}
+    <main>
+      <section class="anime-Card">
+        {% if anime %}
+        <img class="anime-Card__Poster" src="{{anime.poster.url}}" alt="{{ anime.title }}"/>
+        <article class="anime-Card__Info">
+            <h2 class="anime-Card__Title">
+              {{ anime.title }}
+            </h2>
+            <p>{{ anime.description }}</p>
+        <article>
 
-        <a href="/anime/">Back to list</a>
-    {% else %}
-        <p>Not found</p>
-    {% endif %}
-  </body>
-</html>
+        {% else %}
+            <p>Not found</p>
+        {% endif %}
+      </section>
+
+      <a class="anime-BackLink" href="/anime/">Back to list</a>
+    </main>
+  {% endblock %}

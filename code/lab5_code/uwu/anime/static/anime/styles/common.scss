@@ -54,35 +54,20 @@ main {
   align-items: center;
 }
 
-.anime-Card {
-  width: 640px;
+.anime-BackLink {
+  $height: 40px;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  height: $height;
+  width: 100px;
 
-  &__Info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  border-radius: $height;
+  background-color: getSemanticColor(vague, primary);
 
-    text-align: center;
-    font-size: 1.3rem;
-  }
+  display: block;
+  text-align: center;
 
-  &__Poster {
-    width: 225px * 1.5;
-    height: 318px * 1.5;
-
-    border-radius: 4%;
-  }
-
-  &__Title {
-    font-family: 'Noto Sans', sans-serif;
-    letter-spacing: 3px;
-    font-size: 2rem;
-  }
+  color: darken(getSemanticColor(vague, primary), 40%);
+  line-height: $height;
+  text-decoration: none;
 }
 
