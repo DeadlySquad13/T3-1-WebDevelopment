@@ -1,10 +1,22 @@
-{% if animes %}
-    <ul>
-    {% for anime in animes %}
-    <li><a href="/anime/{{ anime.id }}/">{{ anime.title }} (score: {{ anime.get_avg_score }})</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No anime.</p>
-{% endif %}
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Anime</title>
+  </head>
+  <body>
+    {% if animes %}
+      <ul>
+        {% for anime in animes %}
+          <li>
+            <a href="{% url 'anime:detail' anime.id %}">{{ anime.title }} (score: {{ anime.get_avg_score }})</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No anime.</p>
+    {% endif %}
+    <a href="/">Back to main page</a>
+  </body>
+</html>

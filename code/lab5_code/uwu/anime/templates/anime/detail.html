@@ -1,18 +1,27 @@
-{% if anime %}
-<img src="{{anime.poster.url}}" alt="{{ anime.title }}"/>
-    <table>
-      <tr>
-        <th>Title:</th>
-        <td>{{ anime.title }}</td>
-      </tr>
-      <tr>
-        <th>Description</th>
-        <td>{{ anime.description }}</td>
-      </tr>
-    </table>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{{ anime.title }}</title>
+  </head>
+  <body>
+    {% if anime %}
+    <img src="{{anime.poster.url}}" alt="{{ anime.title }}"/>
+        <table>
+          <tr>
+            <th>Title:</th>
+            <td>{{ anime.title }}</td>
+          </tr>
+          <tr>
+            <th>Description</th>
+            <td>{{ anime.description }}</td>
+          </tr>
+        </table>
 
-    <a href="/anime/">Back to list</a>
-{% else %}
-    <p>Not found</p>
-{% endif %}
-
+        <a href="/anime/">Back to list</a>
+    {% else %}
+        <p>Not found</p>
+    {% endif %}
+  </body>
+</html>

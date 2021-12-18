@@ -37,4 +37,4 @@ def results(request, anime_id):
 
 def rate(request, anime_id):
     return HttpResponse(f'You are rating anime {anime_id}')
-"
+
