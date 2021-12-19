@@ -1,0 +1,10 @@
+{% if animes %}
+    <ul>
+    {% for anime in animes %}
+    <li><a href="/anime/{{ anime.id }}/">{{ anime.title }} (score: {{ anime.get_avg_score }})</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No anime.</p>
+{% endif %}
+

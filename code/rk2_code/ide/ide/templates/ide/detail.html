@@ -1,0 +1,35 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+  {% if not ide %} 
+    Not found
+  {% else %}
+    {{ ide.title }}
+  {% endif %}
+{% endblock %}
+
+{% block main %}
+  {% if not ide %}
+      <<p>Not found</p>
+  {% else %}
+    <h1>{{ ide.title }}</h1>
+    <p>
+      Price:
+      <b>
+        {% if not ide.price %}
+          Free
+        {% else %}
+          {{ ide.price }}
+        {% endif %}
+      </b>
+    </p>
+    <ul>
+      {% for programming_language in ide.programming_languages.all %}
+      <li>{{ programming_language.title }}</li>   
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <a href="/update/{{ ide.id }}">Edit</a>
+  <a href="/delete/{{ ide.id }}">Delete</a>
+  <a href="/">Home</a>
+{% endblock %}

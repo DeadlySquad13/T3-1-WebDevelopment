@@ -1,0 +1,19 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}Ide{% endblock %}
+{% block main %}
+  {% if ides %} 
+    <ul>
+      {% for ide in ides %}
+        <li>
+          <a href="/detail/{{ ide.id }}/">
+            {{ ide.title }}
+          </a>
+        </li>    
+      {% endfor %}
+    </ul>
+  {% else %}
+    <<p>No Ides</p>
+  {% endif %}
+  <a href="/create/">Create</a>
+{% endblock %}

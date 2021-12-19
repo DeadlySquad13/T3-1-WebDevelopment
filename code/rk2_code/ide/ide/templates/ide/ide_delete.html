@@ -1,0 +1,14 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+  Delete {{ ide.title }}
+{% endblock %}
+
+{% block main %}
+  <h1>Delete Ide</h1>
+  <form action="" method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete "{{ ide.title }}"?</p>
+    <input type="submit" value="Confirm" />
+  </form>
+{% endblock %}
