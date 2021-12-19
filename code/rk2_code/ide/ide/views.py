@@ -49,4 +49,3 @@ class IdeDeleteView(DeleteView):
     # User won't be redirected until delete operation finishes.
     success_url = reverse_lazy('index')
 
-
