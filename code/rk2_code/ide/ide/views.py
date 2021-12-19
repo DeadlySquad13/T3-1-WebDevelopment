@@ -27,25 +27,6 @@ class DetailView(DetailView):
     template_name = 'ide/detail.html'
 
 
-def update(request, ide_id):
-    ide = get_object_or_404(Ide, pk=ide_id)
-
-    try:
-        selected_language = ide.programming_languages.get(pk=request.POST['selected_language'])
-    except (KeyError, ProgrammingLanguage.DoesNotExist):
-        # Redisplay the ide voting form.
-        return render(request, 'ide/detail.html', {
-            'ide': ide,
-            'error_message': "You didn't select a choice.",
-        })
-    else:
-        selected_language.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        return HttpResponseRedirect(reverse('ide/detail.html', args=(ide.id,)))
-
-
 modifiableIdeFields = ['title', 'price', 'programming_languages']
 
 
