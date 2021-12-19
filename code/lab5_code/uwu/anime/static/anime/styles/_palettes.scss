@@ -1,0 +1,42 @@
+$colorPalette: (
+  graniteGray: #715f65,
+  amaranthPink: #f5a3b7,
+  crimsonRed: #990000,
+  mistyRose: #fee2e3,
+  lavenderGray: #bfb9cf,
+  weldonBlue: #8498af,
+  lavenderBlush: #fff5f5,
+);
+
+@function getColor($key) {
+  @return map-get($colorPalette, $key);
+}
+
+$semanticPalette: (
+  neutral: (
+    primary: getColor(lavenderBlush),
+    secondary: getColor(mistyRose),
+  ),
+
+  informational: (
+    primary: getColor(graniteGray),
+  ),
+
+  vague: (
+    primary: getColor(lavenderGray),
+  ),
+
+  contrasting: (
+    primary: getColor(crimsonRed),
+    secondary: getColor(amaranthPink),
+  )
+
+  //secondary: getColor(graniteGray),
+  //: getColor(graniteGray),
+  //contrasting: getColor(graniteGray),
+  //contrasting: getColor(graniteGray),
+);
+
+@function getSemanticColor($semanticKey, $degreeKey) {
+  @return map-get(map-get($semanticPalette, $semanticKey), $degreeKey);
+}

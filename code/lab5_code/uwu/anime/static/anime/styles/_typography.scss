@@ -1,0 +1,11 @@
+$fontFamilyPrimary: 'Noto Sans', sans-serif;
+$fontFamilyContrasting: 'Kolker Brush', cursive;
+
+$typography: (
+  fontFamilyPrimary: $fontFamilyPrimary,
+  fontFamilyContrasting: $fontFamilyContrasting,
+);
+
+@function getTypography($key) {
+  @return map-get($typography, $key);
+}

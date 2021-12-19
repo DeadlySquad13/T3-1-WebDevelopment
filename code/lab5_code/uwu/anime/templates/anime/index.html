@@ -1,0 +1,23 @@
+{% extends "base_layout.html" %}
+{% load sass_tags %}
+
+{% block stylesheet %}
+  <link href="{% sass_src 'anime/styles/index.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+{% block content %}
+  <main>
+    <h1 class="Greeting">Uwu Anime</h1>
+    {% if animes %}
+      <ul class="AnimeList">
+        {% for anime in animes %}
+          <li class="AnimeList__Item">
+            <a href="{% url 'anime:detail' anime.id %}">{{ anime.title }} (score: {{ anime.get_avg_score }})</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No anime.</p>
+    {% endif %}
+    <a class="BackLink" href="/">Back to main page</a>
+  </main>
+{% endblock %}
