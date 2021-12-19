@@ -16,10 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-# from . import views
+from . import views
 
 urlpatterns = [
-    # path('', views.IndexView.as_view(), name='index'),
+    path('', views.IndexView.as_view(), name='index'),
     # path('<int:pk>/', views.DetailView.as_view(), name='detail'),
     # path('<int:anime_id>/rate/', views.rate, name='rate'),
 
