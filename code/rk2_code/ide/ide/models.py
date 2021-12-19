@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class ProgrammingLanguage(models.Model):
@@ -14,6 +15,9 @@ class Ide(models.Model):
     title = models.CharField(max_length=200)
     price = models.IntegerField(default=0)
     programming_languages = models.ManyToManyField(ProgrammingLanguage)
+
+    def get_absolute_url(self):
+        return reverse('detail', args=[str(self.id)])
 
     def __str__(self):
         return (

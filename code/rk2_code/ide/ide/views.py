@@ -1,12 +1,18 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
-from django.urls import reverse
-from django.views import generic 
+from django.urls import reverse, reverse_lazy
+from django.views.generic import (
+  ListView,
+  DetailView,
+  CreateView,
+  UpdateView,
+  DeleteView
+)
 
 from .models import Ide, ProgrammingLanguage
 
 
-class IndexView(generic.ListView):
+class IndexView(ListView):
     template_name = 'ide/index.html'
     context_object_name = 'ides'
 
@@ -16,7 +22,7 @@ class IndexView(generic.ListView):
         return ide_instances
 
 
-class DetailView(generic.DetailView):
+class DetailView(DetailView):
     model = Ide
     template_name = 'ide/detail.html'
 
@@ -40,34 +46,26 @@ def update(request, ide_id):
         return HttpResponseRedirect(reverse('ide/detail.html', args=(ide.id,)))
 
 
+modifiableIdeFields = ['title', 'price', 'programming_languages']
 
 
-# def emp(request):  
-    # if request.method == "POST":
-        # form = EmployeeForm(request.POST)
-        # if form.is_valid():
-            # try:
-                # form.save()
-                # return redirect('/show')
-            # except:
-                # pass
-    # else:
-        # form = EmployeeForm()
-    # return render(request,'index.html',{'form':form})
-# def show(request):
-    # employees = Employee.objects.all()
-    # return render(request,"show.html",{'employees':employees})
-# def edit(request, id):
-    # employee = Employee.objects.get(id=id)
-    # return render(request,'edit.html', {'employee':employee})
-# def update(request, id):
-    # employee = Employee.objects.get(id=id)
-    # form = EmployeeForm(request.POST, instance = employee)
-    # if form.is_valid():  
-        # form.save()  
-        # return redirect("/show")  
-    # return render(request, 'edit.html', {'employee': employee})
-# def destroy(request, id):
-    # employee = Employee.objects.get(id=id)
-    # employee.delete()
-    # return redirect("/show")
+class IdeCreateView(CreateView):
+    model = Ide
+    template_name = 'ide/ide_create.html'
+    fields = modifiableIdeFields
+
+
+class IdeUpdateView(UpdateView):
+    model = Ide
+    template_name = 'ide/ide_update.html'
+    fields = modifiableIdeFields
+
+
+class IdeDeleteView(DeleteView):
+    model = Ide
+    template_name = 'ide/ide_delete.html'
+
+    # User won't be redirected until delete operation finishes.
+    success_url = reverse_lazy('index')
+
+

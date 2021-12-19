@@ -29,6 +29,7 @@
       {% endfor %}
     </ul>
   {% endif %}
-  <a href="/">Edit</a>
-  <a href="/">Back</a>
+  <a href="/update/{{ ide.id }}">Edit</a>
+  <a href="/delete/{{ ide.id }}">Delete</a>
+  <a href="/">Home</a>
 {% endblock %}

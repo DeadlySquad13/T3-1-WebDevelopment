@@ -1,0 +1,14 @@
+{% extends 'base_layout.html' %}
+ 
+{% block title %}
+  Edit {{ ide.title }}
+{% endblock %}
+
+{% block main %}
+    <h1>Edit Ide</h1>
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+    <input type="submit" value="Update" />
+</form>
+{% endblock main %}
