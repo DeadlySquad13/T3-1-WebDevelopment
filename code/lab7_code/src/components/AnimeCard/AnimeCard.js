@@ -12,10 +12,11 @@ export class AnimeCard {
   }
 
   getHTML() {
-    const { title, description } = this.props;
+    const { title, poster, description } = this.props;
     return (`
       <div class="AnimeCard">
         <h2>${title}</h2>
+        <img src="${poster}" alt="${title}"/>
         <p>${description}</p>
         ${this.children.getHTML()}
       </div>
