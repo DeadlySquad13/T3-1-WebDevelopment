@@ -18,7 +18,12 @@ export class AnimeCard {
         <h2>${title}</h2>
         <img src="${poster}" alt="${title}"/>
         <p>${description}</p>
-        ${this.children.getHTML()}
+        <footer class="AnimeCard__Footer">
+          ${this.children.reduce((html, child) => (
+                html + child.getHTML()
+            ), '')
+          }
+        </footer>
       </div>
       `)
   }

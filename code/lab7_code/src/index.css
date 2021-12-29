@@ -40,7 +40,13 @@ body {
   padding: 2rem;
 }
 
-.AnimeCard > .Button {
+.AnimeCard__Footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.Button {
   min-width: 30%;
   min-height: 2rem;
 
@@ -49,6 +55,7 @@ body {
 
   padding: 0.8em 1.6em;
 }
-.AnimeCard > .Button:hover {
+
+.Button:hover {
   color: black;
 }

@@ -1,6 +1,5 @@
 import { Button } from '../../components/Button/Button.js';
 import { AnimeCard } from '../../components/AnimeCard/AnimeCard.js';
-import { ajax } from '../../modules/ajax.js';
 import { urls } from '../../modules/urls.js';
 import { fetchData } from '../../modules/fetchData.js';
 
@@ -14,7 +13,6 @@ export class MainPage {
       <div class="MainPage">
         ${children.reduce((html, child) => (
               html + child.getHTML()
-          
           ), '')
         }
       </div>
@@ -22,18 +20,23 @@ export class MainPage {
   }
 
   async render() {
-    const button = new Button(this.parent);
+    const currentAnimeId = 3;
 
-    const data = await fetchData(urls.anime(3));
+    const buttonPrevious = new Button(this.parent, {
+      text: 'Previous',
+      onClick: () => {
+        console.log('test', currentAnimeId);
+      }
+    });
+    const buttonNext = new Button(this.parent, {
+      text: 'Next',
+      onClick: function() { console.log('test', currentAnimeId); }
+    });
 
+    const data = await fetchData(urls.anime(currentAnimeId));
+    const animeCard = new AnimeCard(this.parent, [buttonPrevious, buttonNext], data);
 
-    //const anime = {
-      //title: 'Test',
-      //description: 'lalala'
-    //}
-    const animeCard = new AnimeCard(this.parent, button, data);
     const children = [animeCard]
-
     const html = this.getHTML(children);
 
     this.parent.insertAdjacentHTML('beforeend', html);

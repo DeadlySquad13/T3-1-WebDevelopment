@@ -1,10 +1,21 @@
 export class Button {
-  constructor(parent) {
+  props = {
+    text: ''
+  }
+
+  constructor(parent, props) {
     this.parent = parent;
+    this.props = props;
   }
 
   getHTML() {
-    return '<button class="Button" type="button">Clickity clackity!</button>';
+    const { onClick: handleClick } = this.props;
+    const { text } = this.props;
+    return (`
+      <button class="Button" type="button" onclick="${handleClick}">
+        ${text}
+      </button>
+    `);
   }
 
   render() {
