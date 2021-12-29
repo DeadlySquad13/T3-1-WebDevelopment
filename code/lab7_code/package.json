@@ -1,0 +1,29 @@
+{
+  "name": "anime",
+  "version": "1.0.0",
+  "description": "Anime site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeadlySquad13/T3-1-WebDevelopment.git#main"
+  },
+  "keywords": [
+    "js",
+    "rest",
+    "anime"
+  ],
+  "author": "DeadlySquad13",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeadlySquad13/T3-1-WebDevelopment/issues"
+  },
+  "homepage": "https://github.com/DeadlySquad13/T3-1-WebDevelopment/tree/main#readme",
+  "devDependencies": {
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
+}
