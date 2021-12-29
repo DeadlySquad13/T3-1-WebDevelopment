@@ -1,5 +1,8 @@
 import { Button } from '../../components/Button/Button.js';
 import { AnimeCard } from '../../components/AnimeCard/AnimeCard.js';
+import { ajax } from '../../modules/ajax.js';
+import { urls } from '../../modules/urls.js';
+import { fetchData } from '../../modules/fetchData.js';
 
 export class MainPage {
   constructor(parent) {
@@ -18,13 +21,17 @@ export class MainPage {
       `)
   }
 
-  render() {
+  async render() {
     const button = new Button(this.parent);
-    const anime = {
-      title: 'Test',
-      description: 'lalala'
-    }
-    const animeCard = new AnimeCard(this.parent, button, anime);
+
+    const data = await fetchData(urls.anime(3));
+
+
+    //const anime = {
+      //title: 'Test',
+      //description: 'lalala'
+    //}
+    const animeCard = new AnimeCard(this.parent, button, data);
     const children = [animeCard]
 
     const html = this.getHTML(children);
