@@ -20,7 +20,7 @@ export class MainPage {
   }
 
   async render() {
-    const currentAnimeId = 3;
+    const currentAnimeId = 4;
 
     const buttonPrevious = new Button(this.parent, {
       text: 'Previous',
