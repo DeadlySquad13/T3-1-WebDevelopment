@@ -1,5 +1,6 @@
 * {
   color: #eeeeee;
+  font-family: Helvetica;
 }
 
 html {
@@ -8,10 +9,14 @@ html {
 
 h1 {
   color: white;
+  font-family: serif;
 }
 
 h2 {
+  margin: 0;
+  font-size: 3em;
   color: white;
+  font-family: Helvetica;
 }
 
 body {
@@ -37,7 +42,11 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
   padding: 2rem;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: 1px solid #444444aa;
 }
 
 .AnimeCard__Footer {
@@ -50,6 +59,9 @@ body {
   min-width: 30%;
   min-height: 2rem;
 
+  background-color: #ffffff55;
+  border: 1px solid #444444bb;
+
   border-radius: 4px;
   color: #444;
 
@@ -58,4 +70,6 @@ body {
 
 .Button:hover {
   color: black;
+  background-color: #ffffffaa;
+  box-shadow: 1px 1px 5px;
 }
