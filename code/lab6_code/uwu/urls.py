@@ -24,6 +24,8 @@ from anime import views
 router = routers.DefaultRouter()
 router.register(r'anime', views.AnimeViewSet)
 router.register(r'score', views.ScoreViewSet)
+router.register(r'status', views.StatusViewSet)
+router.register(r'interest', views.InterestViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
