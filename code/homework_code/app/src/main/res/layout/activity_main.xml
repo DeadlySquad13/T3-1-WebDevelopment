@@ -14,14 +14,13 @@
         android:layout_marginTop="20dp"
 
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
 
         android:padding="20dp"
 
-        android:background="#e0e0e0"
-
-        android:text="Welcome to Android"
+        android:text="Anime Tracker"
         android:textSize="26sp"
+        android:fontFamily="@font/montserrat_bold"
         />
 
     <ListView
@@ -32,7 +31,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/header">
     </ListView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

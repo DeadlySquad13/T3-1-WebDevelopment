@@ -14,13 +14,13 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/poster"
+        android:layout_marginTop="20dp"
 
         android:layout_width="wrap_content"
         android:layout_height="0dp"
 
-        android:background="#efefef"
-
         android:textSize="28sp"
+        android:fontFamily="@font/montserrat_bold"
     />
 
     <ImageView
@@ -49,7 +49,6 @@
         android:layout_height="0dp"
 
         android:padding="10dp"
-        android:background="#e0e0e0"
 
         android:textSize="16sp"
     />

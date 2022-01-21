@@ -39,7 +39,6 @@ public class Anime {
     }
 
     public String getPoster() {
-//        return getBaseUrl() + poster.substring("http://localhost:8000".length());
         return poster;
     }
 
