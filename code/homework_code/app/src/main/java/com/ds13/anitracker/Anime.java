@@ -1,5 +1,7 @@
 package com.ds13.anitracker;
 
+import static com.ds13.anitracker.NetworkService.getBaseUrl;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -37,6 +39,7 @@ public class Anime {
     }
 
     public String getPoster() {
+//        return getBaseUrl() + poster.substring("http://localhost:8000".length());
         return poster;
     }
 

@@ -81,10 +81,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AnimeDetailsActivity.class);
         intent.putExtra("animePk", animePk);
         startActivity(intent);
-//        // Get TextView element and change it's contents.
-//        TextView textView = findViewById(R.id.header);
-//        textView.setText("Hello from my Java code!");
-//
-//        textView.setText(selectedItem);
     }
 }

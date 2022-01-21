@@ -15,6 +15,10 @@ public class NetworkService {
                 .build();
     }
 
+    public static String getBaseUrl() {
+        return BASE_URL;
+    }
+
     public static NetworkService getInstance() {
         if (instance == null) {
             instance = new NetworkService();

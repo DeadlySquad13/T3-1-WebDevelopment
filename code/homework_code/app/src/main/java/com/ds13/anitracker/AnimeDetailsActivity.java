@@ -8,11 +8,10 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import com.bumptech.glide.Glide;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,11 +28,6 @@ public class AnimeDetailsActivity extends AppCompatActivity {
         this.fetchAnime(animePk);
     }
 
-    public void goBack(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
     protected void fetchAnime(int pk) {
         NetworkService.getInstance()
                 .getJSONApi()
@@ -45,7 +39,7 @@ public class AnimeDetailsActivity extends AppCompatActivity {
                         Anime anime = response.body();
 
                         if (anime != null) {
-                            // Get ListView and fill it with items.
+                            fillAnimeDetails(anime);
                         }
                     }
 
@@ -54,5 +48,26 @@ public class AnimeDetailsActivity extends AppCompatActivity {
                         t.printStackTrace();
                     }
                 });
+    }
+
+    // Parse object and fill view with data.
+    protected void fillAnimeDetails(Anime anime) {
+        // Title.
+        TextView title = findViewById(R.id.title);
+        title.setText(anime.getTitle());
+
+        // Poster.
+        ImageView imageView = (ImageView) findViewById(R.id.poster);
+        Glide.with(this).load(anime.getPoster()).into(imageView);
+
+        // Description.
+        TextView description = findViewById(R.id.description);
+        description.setText(anime.getDescription());
+    }
+
+    // Go back to the MainActivity.
+    public void goBack(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
