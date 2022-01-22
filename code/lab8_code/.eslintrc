@@ -54,7 +54,7 @@
         "import/no-unresolved": "off",
         "simple-import-sort/exports": "error",
         "simple-import-sort/imports": [
-            "error",
+            "warn",
             {
                 "groups": [
                     // Node.js builtins. You could also generate this regex if you use a `.js` config.
