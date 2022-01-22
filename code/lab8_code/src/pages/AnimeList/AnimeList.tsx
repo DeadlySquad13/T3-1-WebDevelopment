@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Li } from 'components/Li';
+import styled from 'styled-components';
 
 export type Anime = {
   pk: string;
@@ -7,6 +9,12 @@ export type Anime = {
   poster: string;
   description: string;
 }
+
+const Ul = styled.ul`
+  li {
+    margin-top: 10px;
+  }
+`
 
 export const AnimeList: React.FC = () => {
     const [animeInstances, setAnimeInstances] = useState<Anime[]>([]);
@@ -36,17 +44,17 @@ export const AnimeList: React.FC = () => {
 
     return (
       <div>
-        <ul>
+        <Ul>
           {
             animeInstances.map((anime) => (
-                <li key={anime.pk}>
+                <Li key={anime.pk} color="#282c34" hoverColor="#61dafb">
                   <Link to={"/anime/" + anime.pk.toString()}>
                     {anime.title}
                   </Link>
-                </li>
+                </Li>
               ))
           }
-        </ul>
+        </Ul>
       </div>
     );
 }
