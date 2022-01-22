@@ -28,6 +28,7 @@ SECRET_KEY = 'django-insecure--z&q4umz1c#tt_^bd0fb3=^$r$4uq&-l77=fpd8(7^d8ki-7r)
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    'localhost',
     '10.0.2.2'
 ]
 
@@ -63,6 +64,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     # Browser.
     'http://localhost:3000',
+    'http://localhost:4003',
     # Android.
     'http://10.0.2.2:8000',
 ]
